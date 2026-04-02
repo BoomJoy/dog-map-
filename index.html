@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>汪去哪 · 江浙沪小狗出行地图</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream: #FAF7F2;
@@ -25,7 +24,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
     background: var(--cream);
     color: var(--ink);
     height: 100vh;
@@ -33,82 +32,68 @@
     display: flex;
     flex-direction: column;
   }
-
-  /* ── Header ── */
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    height: 56px;
+    height: 52px;
     background: var(--ink);
     flex-shrink: 0;
   }
   .logo {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
+    font-size: 17px;
     color: var(--cream);
     letter-spacing: 2px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .logo-paw { font-size: 20px; }
-  .header-sub { font-size: 12px; color: rgba(250,247,242,0.5); letter-spacing: 1px; }
-  .header-right { font-size: 12px; color: rgba(250,247,242,0.4); }
-
-  /* ── Main layout ── */
+  .logo-sub { font-size: 12px; color: rgba(250,247,242,0.45); letter-spacing: 1px; }
+  .header-right { font-size: 11px; color: rgba(250,247,242,0.35); }
   .main { display: flex; flex: 1; overflow: hidden; }
 
-  /* ── Sidebar ── */
+  /* Sidebar */
   .sidebar {
-    width: 340px;
-    min-width: 340px;
+    width: 330px;
+    min-width: 330px;
     background: #fff;
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
-
-  .search-bar {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-  }
+  .search-bar { padding: 12px 14px; border-bottom: 1px solid var(--border); }
   .search-bar input {
     width: 100%;
-    padding: 9px 14px;
+    padding: 8px 14px;
     border: 1px solid var(--border);
     border-radius: 999px;
     font-size: 13px;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: inherit;
     background: var(--cream);
     color: var(--ink);
     outline: none;
-    transition: border-color 0.2s;
   }
   .search-bar input:focus { border-color: var(--bark-light); }
 
   .filter-row {
-    padding: 10px 16px;
+    padding: 9px 14px;
     display: flex;
-    gap: 6px;
+    gap: 5px;
     flex-wrap: wrap;
     border-bottom: 1px solid var(--border);
   }
   .filter-btn {
     font-size: 11px;
-    font-family: 'Noto Sans SC', sans-serif;
-    padding: 5px 12px;
+    font-family: inherit;
+    padding: 4px 10px;
     border-radius: 999px;
     border: 1px solid var(--border);
     background: white;
     color: var(--ink-light);
     cursor: pointer;
     transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 4px;
   }
   .filter-btn:hover { border-color: var(--bark-light); color: var(--bark); }
   .filter-btn.active { background: var(--ink); border-color: var(--ink); color: white; }
@@ -120,45 +105,44 @@
 
   .city-tabs {
     display: flex;
-    padding: 0 16px;
+    padding: 0 14px;
     border-bottom: 1px solid var(--border);
-    gap: 0;
+    overflow-x: auto;
   }
   .city-tab {
     font-size: 12px;
-    padding: 9px 14px;
+    padding: 8px 12px;
     cursor: pointer;
     color: var(--ink-light);
     border-bottom: 2px solid transparent;
     transition: all 0.15s;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .city-tab.active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
 
+  .place-count { padding: 9px 14px 3px; font-size: 11px; color: var(--ink-light); }
   .place-list { flex: 1; overflow-y: auto; }
-  .place-list::-webkit-scrollbar { width: 4px; }
+  .place-list::-webkit-scrollbar { width: 3px; }
   .place-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-  .place-count { padding: 10px 16px 4px; font-size: 11px; color: var(--ink-light); letter-spacing: 0.5px; }
-
   .place-card {
-    padding: 14px 16px;
+    padding: 12px 14px;
     border-bottom: 1px solid var(--border);
     cursor: pointer;
-    transition: background 0.12s;
-    position: relative;
+    transition: background 0.1s;
   }
   .place-card:hover { background: var(--cream); }
   .place-card.selected { background: var(--bark-pale); }
   .place-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-  .place-name { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+  .place-name { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.4; }
   .place-cat-badge {
     font-size: 10px;
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: 999px;
     white-space: nowrap;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 1px;
   }
   .badge-park { background: var(--grass-light); color: var(--grass); }
   .badge-cafe { background: var(--amber-light); color: var(--amber); }
@@ -167,95 +151,68 @@
   .badge-grooming { background: var(--bark-pale); color: var(--bark); }
 
   .place-city { font-size: 11px; color: var(--ink-light); margin-top: 3px; }
-  .place-desc { font-size: 12px; color: var(--ink-light); margin-top: 5px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .place-tags { display: flex; gap: 4px; margin-top: 7px; flex-wrap: wrap; }
-  .place-tag { font-size: 10px; padding: 2px 7px; border-radius: 4px; background: var(--cream); color: var(--ink-light); border: 1px solid var(--border); }
+  .place-desc {
+    font-size: 12px; color: var(--ink-light); margin-top: 5px; line-height: 1.6;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .place-tags { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+  .place-tag { font-size: 10px; padding: 2px 6px; border-radius: 3px; background: var(--cream); color: var(--ink-light); border: 1px solid var(--border); }
 
-  /* ── Map ── */
-  #map-container { flex: 1; position: relative; background: #e8ede8; }
+  /* Map */
+  #map-container { flex: 1; position: relative; }
+  #map { width: 100%; height: 100%; }
 
-  /* ── Detail popup ── */
+  /* Detail popup */
   .detail-popup {
     position: absolute;
-    bottom: 24px;
-    left: 24px;
-    width: 320px;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
     background: white;
     border-radius: 12px;
     border: 1px solid var(--border);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    padding: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.13);
+    padding: 16px;
     display: none;
-    z-index: 10;
-    animation: slideUp 0.2s ease;
+    z-index: 200;
+    animation: slideUp 0.18s ease;
   }
   .detail-popup.show { display: block; }
-  @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  .detail-popup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .detail-popup-name { font-size: 16px; font-weight: 500; color: var(--ink); }
-  .detail-close { background: none; border: none; cursor: pointer; font-size: 18px; color: var(--ink-light); line-height: 1; padding: 0; }
-  .detail-popup-city { font-size: 12px; color: var(--ink-light); margin-bottom: 8px; }
-  .detail-popup-desc { font-size: 13px; color: var(--ink-light); line-height: 1.7; margin-bottom: 12px; }
-  .detail-popup-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-  .detail-tag { font-size: 11px; padding: 3px 9px; border-radius: 4px; background: var(--cream); color: var(--ink-light); border: 1px solid var(--border); }
-
-  /* ── Map SVG markers ── */
-  .map-marker { cursor: pointer; transition: all 0.15s; }
-  .map-marker:hover .marker-circle { transform: scale(1.2); transform-origin: center; }
-  .map-marker.selected .marker-circle { transform: scale(1.3); transform-origin: center; }
-
-  /* ── Leaflet override ── */
-  #map { width: 100%; height: 100%; }
-  .custom-marker {
-    background: none;
-    border: none;
-  }
-  .marker-dot {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    transition: transform 0.15s;
-    cursor: pointer;
-  }
-  .marker-dot:hover { transform: scale(1.2); }
-  .marker-dot.selected { transform: scale(1.3); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-  .marker-park { background: var(--grass); }
-  .marker-cafe { background: var(--amber); }
-  .marker-hotel { background: var(--sky); }
-  .marker-hospital { background: var(--rose); }
-  .marker-grooming { background: var(--bark); }
+  @keyframes slideUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  .detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .detail-name { font-size: 15px; font-weight: 500; color: var(--ink); }
+  .detail-close { background: none; border: none; cursor: pointer; font-size: 18px; color: var(--ink-light); line-height: 1; }
+  .detail-city { font-size: 11px; color: var(--ink-light); margin-bottom: 8px; }
+  .detail-desc { font-size: 12px; color: var(--ink-light); line-height: 1.7; margin-bottom: 10px; }
+  .detail-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .detail-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--cream); color: var(--ink-light); border: 1px solid var(--border); }
 
   .legend {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 14px;
+    right: 14px;
     background: white;
     border-radius: 10px;
     border: 1px solid var(--border);
-    padding: 12px 14px;
-    z-index: 10;
+    padding: 10px 13px;
+    z-index: 200;
     font-size: 11px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
-  .legend-title { font-weight: 500; margin-bottom: 8px; color: var(--ink); }
-  .legend-item { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; color: var(--ink-light); }
-  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-title { font-weight: 500; margin-bottom: 7px; color: var(--ink); }
+  .legend-item { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; color: var(--ink-light); }
+  .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
-  .map-credit { position: absolute; bottom: 6px; right: 8px; font-size: 10px; color: rgba(0,0,0,0.3); z-index: 5; }
+  /* Amap marker override */
+  .amap-icon img, .amap-marker-content-wrapper { border: none !important; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <span class="logo-paw">🐾</span>
-    汪去哪
-    <span class="header-sub">江浙沪小狗出行地图</span>
+    🐾 汪去哪
+    <span class="logo-sub">江浙沪小狗出行地图</span>
   </div>
   <div class="header-right">数据持续更新中</div>
 </header>
@@ -265,15 +222,15 @@
     <div class="search-bar">
       <input type="text" id="search-input" placeholder="搜索地点名称…" />
     </div>
-    <div class="filter-row" id="filter-row">
+    <div class="filter-row">
       <button class="filter-btn active" data-cat="all">全部</button>
-      <button class="filter-btn park" data-cat="park">🌳 公园绿地</button>
+      <button class="filter-btn park" data-cat="park">🌳 公园</button>
       <button class="filter-btn cafe" data-cat="cafe">☕ 咖啡馆</button>
-      <button class="filter-btn hotel" data-cat="hotel">🏨 宠物酒店</button>
-      <button class="filter-btn hospital" data-cat="hospital">🏥 宠物医院</button>
-      <button class="filter-btn grooming" data-cat="grooming">✂️ 美容洗护</button>
+      <button class="filter-btn hotel" data-cat="hotel">🏨 酒店</button>
+      <button class="filter-btn hospital" data-cat="hospital">🏥 医院</button>
+      <button class="filter-btn grooming" data-cat="grooming">✂️ 美容</button>
     </div>
-    <div class="city-tabs" id="city-tabs">
+    <div class="city-tabs">
       <div class="city-tab active" data-city="all">全部城市</div>
       <div class="city-tab" data-city="上海">上海</div>
       <div class="city-tab" data-city="杭州">杭州</div>
@@ -295,179 +252,69 @@
       <div class="legend-item"><div class="legend-dot" style="background:var(--bark)"></div>美容洗护</div>
     </div>
     <div class="detail-popup" id="detail-popup">
-      <div class="detail-popup-header">
-        <div class="detail-popup-name" id="detail-name"></div>
+      <div class="detail-header">
+        <div class="detail-name" id="detail-name"></div>
         <button class="detail-close" id="detail-close">×</button>
       </div>
-      <div class="detail-popup-city" id="detail-city"></div>
-      <div class="detail-popup-desc" id="detail-desc"></div>
-      <div class="detail-popup-tags" id="detail-tags"></div>
+      <div class="detail-city" id="detail-city"></div>
+      <div class="detail-desc" id="detail-desc"></div>
+      <div class="detail-tags" id="detail-tags"></div>
     </div>
   </div>
 </div>
 
-<!-- Leaflet -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-
+<!-- 高德地图 JS API -->
 <script>
+  window._AMapSecurityConfig = { securityJsCode: '59cf6bb2c93d63a319d27acac5e68063' };
+</script>
+<script src="https://webapi.amap.com/maps?v=2.0&key=7d5dfd4c2422feac372e95f1e9bcc100"></script>
+<script>
+const CAT_COLOR = {
+  park:     '#4A7C59',
+  cafe:     '#C4821A',
+  hotel:    '#4A7FA5',
+  hospital: '#B85C6E',
+  grooming: '#8B6F47'
+};
+const CAT_LABEL = { park:'公园绿地', cafe:'咖啡馆', hotel:'宠物酒店', hospital:'宠物医院', grooming:'美容洗护' };
+const CAT_EMOJI = { park:'🌳', cafe:'☕', hotel:'🏨', hospital:'🏥', grooming:'✂️' };
+
 const PLACES = [
   // 上海
-  {
-    id: 1, name: "前滩休闲公园", city: "上海", cat: "park",
-    lat: 31.2020, lng: 121.5050,
-    desc: "浦东滨江网红公园，2024年7月起开放宠物友好区域，可带狗在江边奔跑玩耍，环境开阔风景好。",
-    tags: ["需牵绳", "滨江景观", "宠物专区", "免费"]
-  },
-  {
-    id: 2, name: "后滩公园", city: "上海", cat: "park",
-    lat: 31.1985, lng: 121.4920,
-    desc: "世博园区旁，浦东滨江开放段之一，允许牵绳遛狗，绿化好，适合傍晚遛狗散步。",
-    tags: ["需牵绳", "滨江步道", "免费"]
-  },
-  {
-    id: 3, name: "Manner Coffee（徐汇滨江店）", city: "上海", cat: "cafe",
-    lat: 31.1950, lng: 121.4700,
-    desc: "徐汇滨江宠物友好门店，户外设宠物活动区，有水碗和牵引绳挂钩，还有狗狗专属爪布奇诺隐藏菜单。",
-    tags: ["爪布奇诺", "户外草坪", "有水碗", "牵引绳挂钩"]
-  },
-  {
-    id: 4, name: "Seesaw Coffee（大学路店）", city: "上海", cat: "cafe",
-    lat: 31.2980, lng: 121.5060,
-    desc: "杨浦大学路宠物友好咖啡馆，周末限时步行街氛围佳，室内可带狗，有专属水碗。",
-    tags: ["室内可带狗", "有零食", "周末步行街"]
-  },
-  {
-    id: 5, name: "上海虹桥雅乐轩酒店", city: "上海", cat: "hotel",
-    lat: 31.1940, lng: 121.3200,
-    desc: "万豪旗下宠物友好酒店，ARF宠物计划，狗狗可入住，毗邻国家会展中心，交通便利。",
-    tags: ["ARF计划", "星级酒店", "需押金", "交通便利"]
-  },
-  {
-    id: 6, name: "前昇希尔顿酒店", city: "上海", cat: "hotel",
-    lat: 30.9190, lng: 121.4800,
-    desc: "奉贤区宠物友好酒店，设有12间宠物友好客房，节假日常爆满，有户外花园供宠物玩耍。",
-    tags: ["宠物友好客房", "户外花园", "需提前预订", "奉贤区"]
-  },
-  {
-    id: 7, name: "松江广富林希尔顿酒店", city: "上海", cat: "hotel",
-    lat: 31.0320, lng: 121.1750,
-    desc: "坐落广富林文化遗址旁，宠物友好房配备狗床和玩具，主要客群为20-35岁年轻人。",
-    tags: ["宠物用具齐全", "文化遗址旁", "松江区", "需预约"]
-  },
-  {
-    id: 8, name: "苏河湾万象天地", city: "上海", cat: "grooming",
-    lat: 31.2530, lng: 121.4530,
-    desc: "商场内设"宠爱天地"，提供爱宠服务和狗狗临时托管寄养服务，购物遛娃遛狗一站搞定。",
-    tags: ["临时托管", "购物中心", "一站式", "市中心"]
-  },
-  {
-    id: 9, name: "AI PLAZA西岸凤巢", city: "上海", cat: "park",
-    lat: 31.1760, lng: 121.4580,
-    desc: "徐汇滨江新商场，三楼专设遛狗区，设施齐全，有不同高度饮水装置，长椅下有拴狗圈。",
-    tags: ["遛狗专区", "宠物饮水", "拴狗设施", "免费"]
-  },
-  {
-    id: 10, name: "朗香公园", city: "上海", cat: "park",
-    lat: 31.3470, lng: 121.3900,
-    desc: "宝山区宠物友好公园，有专属不牵绳遛狗区约800㎡，环境开阔，即将配套宠物友好咖啡馆。",
-    tags: ["可放绳区域", "环境开阔", "宝山区", "试运营中"]
-  },
-
+  { id:1,  name:"前滩休闲公园",       city:"上海", cat:"park",     lng:121.5050, lat:31.2020, desc:"浦东滨江网红公园，2024年7月起开放宠物友好区域，可带狗在江边奔跑玩耍，环境开阔风景好。", tags:["需牵绳","滨江景观","宠物专区","免费"] },
+  { id:2,  name:"后滩公园",           city:"上海", cat:"park",     lng:121.4920, lat:31.1985, desc:"世博园区旁浦东滨江开放段之一，允许牵绳遛狗，绿化好，适合傍晚散步。", tags:["需牵绳","滨江步道","免费"] },
+  { id:3,  name:"AI PLAZA西岸凤巢",   city:"上海", cat:"park",     lng:121.4580, lat:31.1760, desc:"徐汇滨江新商场，三楼专设遛狗区，有不同高度饮水装置，长椅下有拴狗圈。", tags:["遛狗专区","宠物饮水","拴狗设施","免费"] },
+  { id:4,  name:"朗香公园",           city:"上海", cat:"park",     lng:121.3900, lat:31.3470, desc:"宝山区宠物友好公园，有专属不牵绳遛狗区约800㎡，环境开阔，配套宠物咖啡馆。", tags:["可放绳区域","环境开阔","宝山区","试运营中"] },
+  { id:5,  name:"Manner Coffee 徐汇滨江店", city:"上海", cat:"cafe", lng:121.4700, lat:31.1950, desc:"徐汇滨江宠物友好门店，户外设宠物活动区，有水碗和牵引绳挂钩，还有爪布奇诺隐藏菜单。", tags:["爪布奇诺","户外草坪","有水碗","牵引绳挂钩"] },
+  { id:6,  name:"Seesaw Coffee 大学路店", city:"上海", cat:"cafe", lng:121.5060, lat:31.2980, desc:"杨浦大学路宠物友好咖啡馆，周末限时步行街氛围佳，室内可带狗，有专属水碗。", tags:["室内可带狗","有零食","周末步行街"] },
+  { id:7,  name:"苏河湾万象天地",     city:"上海", cat:"grooming", lng:121.4530, lat:31.2530, desc:"商场内设"宠爱天地"，提供爱宠服务和狗狗临时托管寄养，购物遛狗一站搞定。", tags:["临时托管","购物中心","一站式","市中心"] },
+  { id:8,  name:"上海虹桥雅乐轩酒店", city:"上海", cat:"hotel",    lng:121.3200, lat:31.1940, desc:"万豪旗下宠物友好酒店，ARF宠物计划，毗邻国家会展中心，交通便利。", tags:["ARF计划","星级酒店","需押金","交通便利"] },
+  { id:9,  name:"前昇希尔顿酒店",     city:"上海", cat:"hotel",    lng:121.4800, lat:30.9190, desc:"奉贤区宠物友好酒店，设有12间宠物友好客房，有户外花园供宠物玩耍，节假日常爆满。", tags:["宠物友好客房","户外花园","需提前预订","奉贤区"] },
+  { id:10, name:"松江广富林希尔顿酒店", city:"上海", cat:"hotel",  lng:121.1750, lat:31.0320, desc:"广富林文化遗址旁，宠物友好房配备狗床和玩具，主要客群为20-35岁年轻人。", tags:["宠物用具齐全","文化遗址旁","松江区","需预约"] },
   // 杭州
-  {
-    id: 11, name: "CP Coffee（凤凰御元园区）", city: "杭州", cat: "cafe",
-    lat: 30.2250, lng: 120.1690,
-    desc: "凤凰山脚下森林系野营风咖啡馆，宠物友好，有露营帐篷和超大院子，可领养被遗弃猫咪。",
-    tags: ["森林系", "露营风", "可领养猫咪", "凤凰山"]
-  },
-  {
-    id: 12, name: "归零咖啡酒馆", city: "杭州", cat: "cafe",
-    lat: 30.3150, lng: 120.0980,
-    desc: "拱墅区宠物友好咖啡酒馆，老板自养两只狗会在店内陪伴，备有专属狗碗，氛围轻松。",
-    tags: ["拱墅区", "有狗碗", "酒馆氛围", "轻松随性"]
-  },
-  {
-    id: 13, name: "西溪天街", city: "杭州", cat: "park",
-    lat: 30.2760, lng: 120.0560,
-    desc: "龙湖旗下商场，设有宠物电梯、宠物厕所，是杭州少数有完整宠物友好设施的购物中心。",
-    tags: ["宠物电梯", "宠物厕所", "购物中心", "配套完善"]
-  },
-  {
-    id: 14, name: "杭州开元天域酒店", city: "杭州", cat: "hotel",
-    lat: 30.2490, lng: 120.1550,
-    desc: "大众点评2025宠物友好酒店榜上榜，提供宠物食品用品专属房间，设有户外草坪供宠物活动。",
-    tags: ["必住榜上榜", "专属房间", "户外草坪", "宠物用品"]
-  },
-  {
-    id: 15, name: "小河公园", city: "杭州", cat: "park",
-    lat: 30.3350, lng: 120.1200,
-    desc: "拱墅区工业遗址改造公园，设有宠物乐园，打通运河滨水绿道，串联历史文化街区。",
-    tags: ["宠物乐园", "运河边", "工业风", "拱墅区"]
-  },
-  {
-    id: 16, name: "杭州中心屋顶花园", city: "杭州", cat: "park",
-    lat: 30.2720, lng: 120.1640,
-    desc: "L8屋顶花园定期举办宠物派对活动，曾办西高地专属聚会，提供游戏道具、市集和宠物餐饮。",
-    tags: ["定期活动", "屋顶花园", "宠物派对", "市中心"]
-  },
-
+  { id:11, name:"CP Coffee 凤凰御元园区", city:"杭州", cat:"cafe", lng:120.1690, lat:30.2250, desc:"凤凰山脚下森林系野营风咖啡馆，宠物友好，有露营帐篷和超大院子，可领养被遗弃猫咪。", tags:["森林系","露营风","可领养猫咪","凤凰山"] },
+  { id:12, name:"归零咖啡酒馆",       city:"杭州", cat:"cafe",     lng:120.0980, lat:30.3150, desc:"拱墅区宠物友好咖啡酒馆，老板自养两只狗会在店内陪伴，备有专属狗碗，氛围轻松。", tags:["拱墅区","有狗碗","酒馆氛围","轻松随性"] },
+  { id:13, name:"西溪天街",           city:"杭州", cat:"park",     lng:120.0560, lat:30.2760, desc:"龙湖旗下商场，设有宠物电梯、宠物厕所，是杭州少数有完整宠物友好设施的购物中心。", tags:["宠物电梯","宠物厕所","购物中心","配套完善"] },
+  { id:14, name:"小河公园",           city:"杭州", cat:"park",     lng:120.1200, lat:30.3350, desc:"拱墅区工业遗址改造公园，设有宠物乐园，打通运河滨水绿道，串联历史文化街区。", tags:["宠物乐园","运河边","工业风","拱墅区"] },
+  { id:15, name:"杭州中心屋顶花园",   city:"杭州", cat:"park",     lng:120.1640, lat:30.2720, desc:"L8屋顶花园定期举办宠物派对，曾办西高地专属聚会，提供游戏道具、市集和宠物餐饮。", tags:["定期活动","屋顶花园","宠物派对","市中心"] },
+  { id:16, name:"杭州开元天域酒店",   city:"杭州", cat:"hotel",    lng:120.1550, lat:30.2490, desc:"大众点评2025宠物友好必住榜上榜，提供宠物食品用品专属房间，设有户外草坪。", tags:["必住榜上榜","专属房间","户外草坪","宠物用品"] },
   // 南京
-  {
-    id: 17, name: "玄武湖公园", city: "南京", cat: "park",
-    lat: 32.0850, lng: 118.7990,
-    desc: "南京最大城市湖泊公园，设有宠物专区，风景秀丽，周末常有狗友自发交流聚会活动。",
-    tags: ["宠物专区", "免费", "湖景", "周末有活动"]
-  },
-  {
-    id: 18, name: "秦淮河滨水步道", city: "南京", cat: "park",
-    lat: 32.0250, lng: 118.7900,
-    desc: "历史古城区滨水步道，允许牵绳遛狗，夜景迷人，适合傍晚携犬散步打卡。",
-    tags: ["需牵绳", "历史古城", "夜景优美", "免费"]
-  },
-  {
-    id: 19, name: "南京宠物友好民宿", city: "南京", cat: "hotel",
-    lat: 32.0600, lng: 118.7800,
-    desc: "南京有多家整栋别墅式宠物友好民宿，室内外均可遛狗，提供捡屎袋，仅需额外付清洁费。",
-    tags: ["整栋别墅", "室内外均可", "需清洁费", "亲宠设计"]
-  },
-
+  { id:17, name:"玄武湖公园",         city:"南京", cat:"park",     lng:118.7990, lat:32.0850, desc:"南京最大城市湖泊公园，设有宠物专区，风景秀丽，周末常有狗友自发交流活动。", tags:["宠物专区","免费","湖景","周末有活动"] },
+  { id:18, name:"秦淮河滨水步道",     city:"南京", cat:"park",     lng:118.7900, lat:32.0250, desc:"历史古城区滨水步道，允许牵绳遛狗，夜景迷人，适合傍晚携犬散步打卡。", tags:["需牵绳","历史古城","夜景优美","免费"] },
+  { id:19, name:"南京宠物友好别墅民宿", city:"南京", cat:"hotel",  lng:118.7800, lat:32.0600, desc:"南京有多家整栋别墅式宠物友好民宿，室内外均可遛狗，提供捡屎袋，仅需额外付清洁费。", tags:["整栋别墅","室内外均可","需清洁费","亲宠设计"] },
   // 苏州
-  {
-    id: 20, name: "重云巷（阳澄湖半岛）", city: "苏州", cat: "park",
-    lat: 31.4450, lng: 120.8900,
-    desc: "苏州全业态宠物友好街区，配备1500㎡风雨操场、800㎡潮汐戏水池和小型犬专属公园，还有宠物鲜食餐厅和摄影。",
-    tags: ["戏水池", "风雨操场", "小型犬专区", "宠物摄影"]
-  },
-  {
-    id: 21, name: "爪啡咖啡", city: "苏州", cat: "cafe",
-    lat: 31.2990, lng: 120.5850,
-    desc: "苏州宠物友好咖啡馆，木质色调加绿植装潢，设有宠物休息区，配备柔软垫子和玩具。",
-    tags: ["宠物休息区", "木质风格", "有玩具", "绿植装潢"]
-  },
-  {
-    id: 22, name: "黑犬咖啡", city: "苏州", cat: "cafe",
-    lat: 31.3020, lng: 120.5920,
-    desc: "美式复古风宠物友好咖啡馆，允许携宠进店，有专属水碗，是苏州狗主人常聚的宝藏小店。",
-    tags: ["美式复古", "有水碗", "宠物友好", "气氛佳"]
-  },
-  {
-    id: 23, name: "六脚兽宠物度假酒店", city: "苏州", cat: "hotel",
-    lat: 31.4430, lng: 120.8880,
-    desc: "位于重云巷内的宠物度假酒店，专为宠物打造的住宿体验，配套完整的宠物友好设施。",
-    tags: ["宠物度假", "配套完整", "阳澄湖", "特色住宿"]
-  },
+  { id:20, name:"重云巷（阳澄湖半岛）", city:"苏州", cat:"park",   lng:120.8900, lat:31.4450, desc:"苏州全业态宠物友好街区，1500㎡风雨操场、800㎡潮汐戏水池和小型犬专属公园。", tags:["戏水池","风雨操场","小型犬专区","宠物摄影"] },
+  { id:21, name:"爪啡咖啡",           city:"苏州", cat:"cafe",     lng:120.5850, lat:31.2990, desc:"苏州宠物友好咖啡馆，木质色调加绿植装潢，设有宠物休息区，配备柔软垫子和玩具。", tags:["宠物休息区","木质风格","有玩具","绿植装潢"] },
+  { id:22, name:"黑犬咖啡",           city:"苏州", cat:"cafe",     lng:120.5920, lat:31.3020, desc:"美式复古风宠物友好咖啡馆，允许携宠进店，有专属水碗，苏州狗主人常聚的宝藏小店。", tags:["美式复古","有水碗","宠物友好","气氛佳"] },
+  { id:23, name:"六脚兽宠物度假酒店", city:"苏州", cat:"hotel",    lng:120.8880, lat:31.4430, desc:"位于重云巷内的宠物度假酒店，专为宠物打造的住宿体验，配套完整的宠物友好设施。", tags:["宠物度假","配套完整","阳澄湖","特色住宿"] },
 ];
 
 // State
-let currentCat = 'all';
-let currentCity = 'all';
-let selectedId = null;
-let searchQ = '';
-let markers = {};
+let currentCat = 'all', currentCity = 'all', selectedId = null, searchQ = '';
+let amapMarkers = {};
+let amapMap = null;
 
-// Filter logic
-function filtered() {
+function filteredPlaces() {
   return PLACES.filter(p => {
     if (currentCat !== 'all' && p.cat !== currentCat) return false;
     if (currentCity !== 'all' && p.city !== currentCity) return false;
@@ -476,39 +323,56 @@ function filtered() {
   });
 }
 
-// Category helpers
-const catLabel = { park: '公园绿地', cafe: '咖啡馆', hotel: '宠物酒店', hospital: '宠物医院', grooming: '美容洗护' };
-const catEmoji = { park: '🌳', cafe: '☕', hotel: '🏨', hospital: '🏥', grooming: '✂️' };
+function makeMarkerHTML(p, selected) {
+  return `<div style="
+    width:32px;height:32px;border-radius:50%;
+    background:${CAT_COLOR[p.cat]};
+    border:2.5px solid white;
+    box-shadow:0 2px 8px rgba(0,0,0,${selected?'0.4':'0.22'});
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;cursor:pointer;
+    transform:${selected?'scale(1.25)':'scale(1)'};
+    transition:transform 0.15s;
+  ">${CAT_EMOJI[p.cat]}</div>`;
+}
 
-// Init map
-const map = L.map('map', { zoomControl: true }).setView([31.15, 120.85], 8);
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '© OpenStreetMap © CartoDB',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
-
-// Create markers
-PLACES.forEach(p => {
-  const icon = L.divIcon({
-    className: 'custom-marker',
-    html: `<div class="marker-dot marker-${p.cat}" id="mdot-${p.id}">${catEmoji[p.cat]}</div>`,
-    iconSize: [28, 28],
-    iconAnchor: [14, 14]
+function initMap() {
+  amapMap = new AMap.Map('map', {
+    zoom: 8,
+    center: [120.85, 31.15],
+    mapStyle: 'amap://styles/light'
   });
-  const m = L.marker([p.lat, p.lng], { icon }).addTo(map);
-  m.on('click', () => selectPlace(p.id));
-  markers[p.id] = m;
-});
 
-function updateMarkerVisibility() {
-  const vis = new Set(filtered().map(p => p.id));
   PLACES.forEach(p => {
-    const dot = document.getElementById('mdot-' + p.id);
-    if (!dot) return;
-    dot.style.opacity = vis.has(p.id) ? '1' : '0.2';
-    dot.style.transform = selectedId === p.id ? 'scale(1.3)' : '';
+    const marker = new AMap.Marker({
+      position: [p.lng, p.lat],
+      content: makeMarkerHTML(p, false),
+      offset: new AMap.Pixel(-16, -16)
+    });
+    marker.on('click', () => selectPlace(p.id));
+    marker.setMap(amapMap);
+    amapMarkers[p.id] = marker;
+  });
+}
+
+function updateMarkers() {
+  const visIds = new Set(filteredPlaces().map(p => p.id));
+  PLACES.forEach(p => {
+    const m = amapMarkers[p.id];
+    if (!m) return;
+    const sel = selectedId === p.id;
+    const vis = visIds.has(p.id);
+    m.setContent(`<div style="
+      width:32px;height:32px;border-radius:50%;
+      background:${CAT_COLOR[p.cat]};
+      border:2.5px solid white;
+      box-shadow:0 2px 8px rgba(0,0,0,${sel?'0.4':'0.2'});
+      display:flex;align-items:center;justify-content:center;
+      font-size:14px;cursor:pointer;
+      transform:${sel?'scale(1.3)':'scale(1)'};
+      opacity:${vis?1:0.2};
+      transition:all 0.15s;
+    ">${CAT_EMOJI[p.cat]}</div>`);
   });
 }
 
@@ -516,33 +380,28 @@ function selectPlace(id) {
   selectedId = id;
   const p = PLACES.find(x => x.id === id);
   if (!p) return;
-
-  // Update detail popup
   document.getElementById('detail-name').textContent = p.name;
-  document.getElementById('detail-city').textContent = p.city + ' · ' + catLabel[p.cat];
+  document.getElementById('detail-city').textContent = p.city + ' · ' + CAT_LABEL[p.cat];
   document.getElementById('detail-desc').textContent = p.desc;
   document.getElementById('detail-tags').innerHTML = p.tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
   document.getElementById('detail-popup').classList.add('show');
-
-  // Pan map
-  map.panTo([p.lat, p.lng], { animate: true });
-
+  if (amapMap) amapMap.panTo([p.lng, p.lat]);
   renderList();
-  updateMarkerVisibility();
+  updateMarkers();
 }
 
 function renderList() {
-  const list = filtered();
+  const list = filteredPlaces();
   document.getElementById('place-count').textContent = `共 ${list.length} 个地点`;
   document.getElementById('place-list').innerHTML = list.map(p => `
-    <div class="place-card ${selectedId === p.id ? 'selected' : ''}" data-id="${p.id}">
+    <div class="place-card ${selectedId===p.id?'selected':''}" data-id="${p.id}">
       <div class="place-card-top">
         <div class="place-name">${p.name}</div>
-        <span class="place-cat-badge badge-${p.cat}">${catEmoji[p.cat]} ${catLabel[p.cat]}</span>
+        <span class="place-cat-badge badge-${p.cat}">${CAT_EMOJI[p.cat]} ${CAT_LABEL[p.cat]}</span>
       </div>
       <div class="place-city">${p.city}</div>
       <div class="place-desc">${p.desc}</div>
-      <div class="place-tags">${p.tags.map(t => `<span class="place-tag">${t}</span>`).join('')}</div>
+      <div class="place-tags">${p.tags.map(t=>`<span class="place-tag">${t}</span>`).join('')}</div>
     </div>
   `).join('');
   document.querySelectorAll('.place-card').forEach(el => {
@@ -558,8 +417,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.add('active');
     selectedId = null;
     document.getElementById('detail-popup').classList.remove('show');
-    renderList();
-    updateMarkerVisibility();
+    renderList(); updateMarkers();
   });
 });
 
@@ -571,18 +429,21 @@ document.querySelectorAll('.city-tab').forEach(tab => {
     tab.classList.add('active');
     selectedId = null;
     document.getElementById('detail-popup').classList.remove('show');
-    if (currentCity !== 'all') {
-      const cityPlaces = PLACES.filter(p => p.city === currentCity);
-      if (cityPlaces.length) {
-        const lats = cityPlaces.map(p => p.lat);
-        const lngs = cityPlaces.map(p => p.lng);
-        map.fitBounds([[Math.min(...lats)-0.1, Math.min(...lngs)-0.1], [Math.max(...lats)+0.1, Math.max(...lngs)+0.1]]);
+    if (amapMap) {
+      if (currentCity !== 'all') {
+        const ps = PLACES.filter(p => p.city === currentCity);
+        if (ps.length) {
+          const lngs = ps.map(p=>p.lng), lats = ps.map(p=>p.lat);
+          amapMap.setBounds(new AMap.Bounds(
+            [Math.min(...lngs)-0.15, Math.min(...lats)-0.1],
+            [Math.max(...lngs)+0.15, Math.max(...lats)+0.1]
+          ));
+        }
+      } else {
+        amapMap.setZoomAndCenter(8, [120.85, 31.15]);
       }
-    } else {
-      map.setView([31.15, 120.85], 8);
     }
-    renderList();
-    updateMarkerVisibility();
+    renderList(); updateMarkers();
   });
 });
 
@@ -591,21 +452,23 @@ document.getElementById('search-input').addEventListener('input', e => {
   searchQ = e.target.value.trim();
   selectedId = null;
   document.getElementById('detail-popup').classList.remove('show');
-  renderList();
-  updateMarkerVisibility();
+  renderList(); updateMarkers();
 });
 
 // Close popup
 document.getElementById('detail-close').addEventListener('click', () => {
   selectedId = null;
   document.getElementById('detail-popup').classList.remove('show');
-  renderList();
-  updateMarkerVisibility();
+  renderList(); updateMarkers();
 });
 
-// Initial render
+// Init
+window.onload = function() {
+  if (typeof AMap !== 'undefined') {
+    initMap();
+  }
+};
 renderList();
-updateMarkerVisibility();
 </script>
 </body>
 </html>
