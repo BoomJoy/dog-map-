@@ -264,10 +264,10 @@
 </div>
 
 <!-- 高德地图 JS API -->
-<script>
+<script type="text/javascript">
   window._AMapSecurityConfig = { securityJsCode: '59cf6bb2c93d63a319d27acac5e68063' };
 </script>
-<script src="https://webapi.amap.com/maps?v=2.0&key=7d5dfd4c2422feac372e95f1e9bcc100"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=7d5dfd4c2422feac372e95f1e9bcc100"></script>
 <script>
 const CAT_COLOR = {
   park:     '#4A7C59',
@@ -347,7 +347,8 @@ function initMap() {
     const marker = new AMap.Marker({
       position: [p.lng, p.lat],
       content: makeMarkerHTML(p, false),
-      offset: new AMap.Pixel(-16, -16)
+      offset: new AMap.Pixel(-16, -16),
+      zIndex: 100
     });
     marker.on('click', () => selectPlace(p.id));
     marker.setMap(amapMap);
@@ -437,7 +438,7 @@ document.querySelectorAll('.city-tab').forEach(tab => {
           amapMap.setBounds(new AMap.Bounds(
             [Math.min(...lngs)-0.15, Math.min(...lats)-0.1],
             [Math.max(...lngs)+0.15, Math.max(...lats)+0.1]
-          ));
+          ), false, [50, 50, 50, 50]);
         }
       } else {
         amapMap.setZoomAndCenter(8, [120.85, 31.15]);
